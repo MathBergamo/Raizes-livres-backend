@@ -1,4 +1,4 @@
-# Projeto de E-commerce - Raizes Livres
+# Projeto E-commerce - Raizes Livres
 
 Este é o README do projeto de E-commerce desenvolvido como parte do curso de Desenvolvedor Java Fullstack Junior oferecido pela Generation. O projeto está em sua fase inicial e tem como objetivo principal a criação de uma plataforma de comércio eletrônico (e-commerce) voltada para a entrega de alimentos de qualidade para moradores de rua na cidade de São Paulo. Além disso, o projeto tem a missão de promover e divulgar as comidas nativas e tradicionais de diversas regiões do Brasil.
 
