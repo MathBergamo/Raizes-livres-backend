@@ -15,7 +15,6 @@ O projeto E-commerce de Alimentos para Moradores de Rua incluirá as seguintes f
 3. **Carrinho de Compras:** Funcionalidade que permite aos usuários selecionar os alimentos desejados e adicioná-los ao carrinho de compras virtual.
 4. **Finalização de Pedido:** Os usuários poderão revisar seu carrinho, confirmar os itens selecionados e finalizar o pedido de doação.
 5. **Administração de Produtos:** Área administrativa para adicionar, atualizar ou remover produtos disponíveis para doação.
-6. **Rastreamento de Pedidos:** Capacidade de rastrear o status das doações, desde o pedido até a entrega.
 
 ## Tecnologias Utilizadas
 
