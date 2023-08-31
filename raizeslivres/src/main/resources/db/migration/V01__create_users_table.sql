@@ -1,8 +1,7 @@
-CREATE TABLE users (
+CREATE TABLE produto (
   id SERIAL PRIMARY KEY UNIQUE,
-  role VARCHAR(40) NOT NULL,
-  name VARCHAR(100) NOT NULL,
-  password VARCHAR(60) NOT NULL,
-  email VARCHAR(100) NOT NULL UNIQUE,
-  date_birth DATE NOT NULL
+  nome VARCHAR(255) NOT NULL,
+  preco Float NOT NULL,
+  descricao VARCHAR(255) NOT NULL,
+  foto VARCHAR(255)
 );
