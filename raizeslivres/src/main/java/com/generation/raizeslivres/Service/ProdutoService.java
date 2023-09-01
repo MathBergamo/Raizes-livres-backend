@@ -17,9 +17,9 @@ public class ProdutoService {
     private ProdutoRepository produtoRepository;
 
     public Produto findById(Long id) {
-        Optional<Produto> user = produtoRepository.findById(id);
-        return user.orElseThrow(() -> new EntityNotFoundException(
-                "Usuário não encontrado! Id: " + id));
+        Optional<Produto> produto = produtoRepository.findById(id);
+        return produto.orElseThrow(() -> new EntityNotFoundException(
+                "Produto não encontrado! Id: " + id));
     }
 
     @Transactional

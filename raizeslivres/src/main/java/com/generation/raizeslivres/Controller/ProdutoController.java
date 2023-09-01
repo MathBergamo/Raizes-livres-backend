@@ -13,16 +13,14 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ProdutoController {
 
-    @Autowired
-    private ProdutoRepository produtoRepository;
 
     @Autowired
     private ProdutoService produtoService;
 
     @GetMapping("/{id}")
     public ResponseEntity<Produto> findById(@PathVariable Long id) {
-        Produto obj = produtoService.findById(id);
-        return ResponseEntity.ok().body(obj);
+        Produto produto = produtoService.findById(id);
+        return ResponseEntity.ok().body(produto);
     }
 
     @PostMapping
