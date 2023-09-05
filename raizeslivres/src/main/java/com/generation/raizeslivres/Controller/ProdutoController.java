@@ -1,18 +1,18 @@
 package com.generation.raizeslivres.Controller;
 
 import com.generation.raizeslivres.Models.Produto;
-import com.generation.raizeslivres.Repository.ProdutoRepository;
 import com.generation.raizeslivres.Service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/produto")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ProdutoController {
-
 
     @Autowired
     private ProdutoService produtoService;
@@ -35,4 +35,8 @@ public class ProdutoController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping
+    public ResponseEntity<List<Produto>> getAll() {
+        return ResponseEntity.ok(produtoService.getAll());
+    }
 }
