@@ -1,96 +1,89 @@
 package com.generation.raizeslivres.Models;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name="usuario")
+@Table(name = "usuario")
 public class Usuario {
-	
-	@Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Id;
-	
-	@NotBlank
-	@Max(500)
-	private String nome;
-	
-	@NotBlank
-	@Max(100)
-	private String email;
+    private Long Id;
 
-	@NotBlank
-	@Min(8)
-	private String senha;
-	
-	private Boolean ativo;
-	
-	private String foto;
-	
-	
-	
-	public Usuario(Long id, String nome, String email, String senha, Boolean ativo, String foto) {
-		super();
-		Id = id;
-		this.nome = nome;
-		this.email = email;
-		this.senha = senha;
-		this.ativo = ativo;
-		this.foto = foto;
-	}
+    @NotBlank
+    private String nome;
 
-	public Long getId() {
-		return Id;
-	}
+    @NotBlank
+    private String email;
 
-	public void setId(Long id) {
-		Id = id;
-	}
+    @NotBlank
+    @Min(8)
+    private String senha;
 
-	public String getNome() {
-		return nome;
-	}
+    private Boolean ativo;
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    private String foto;
 
-	public String getEmail() {
-		return email;
-	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public Usuario(Long id, String nome, String email, String senha, Boolean ativo, String foto) {
+        super();
+        Id = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.ativo = ativo;
+        this.foto = foto;
+    }
 
-	public String getSenha() {
-		return senha;
-	}
+    public Long getId() {
+        return Id;
+    }
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+    public void setId(Long id) {
+        Id = id;
+    }
 
-	public Boolean getAtivo() {
-		return ativo;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public String getFoto() {
-		return foto;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 }
