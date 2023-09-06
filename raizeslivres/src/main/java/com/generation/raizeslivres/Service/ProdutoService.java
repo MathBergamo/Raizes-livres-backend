@@ -22,6 +22,7 @@ public class ProdutoService {
         return produto.orElseThrow(() -> new EntityNotFoundException(
                 "Produto não encontrado! Id: " + id));
     }
+    
 
     @Transactional
     public Produto create(@Valid Produto produto) {
