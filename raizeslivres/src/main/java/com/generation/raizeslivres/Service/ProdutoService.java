@@ -23,10 +23,21 @@ public class ProdutoService {
                 "Produto não encontrado! Id: " + id));
     }
 
+    public List<Produto> getAll() {
+        return produtoRepository.findAll();
+    }
+
 
     @Transactional
     public Produto create(@Valid Produto produto) {
         return produtoRepository.save(produto);
+    }
+
+    public Optional<Produto> update(@Valid Produto produto) {
+        Optional<Produto> updateProduto = produtoRepository.findById(produto.getId());
+        if (updateProduto.isPresent())
+            return Optional.of(produtoRepository.save(produto));
+        return Optional.empty();
     }
 
     public void delete(Long id) {
@@ -36,17 +47,6 @@ public class ProdutoService {
         } catch (Exception e) {
             throw new RuntimeException("Não é possível realizar a exclusão!");
         }
-    }
-
-    public List<Produto> getAll() {
-        return produtoRepository.findAll();
-    }
-
-    public Optional<Produto> update(@Valid Produto produto) {
-        Optional<Produto> updateProduto = produtoRepository.findById(produto.getId());
-        if (updateProduto.isPresent())
-            return Optional.of(produtoRepository.save(produto));
-        return Optional.empty();
     }
 
 }
