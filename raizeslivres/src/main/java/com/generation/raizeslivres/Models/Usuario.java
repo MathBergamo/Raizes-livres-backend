@@ -1,9 +1,12 @@
 package com.generation.raizeslivres.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+
+import java.util.List;
 
 @Entity
 @Table(name = "usuario")
@@ -27,6 +30,9 @@ public class Usuario {
 
     private String foto;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties("usuario")
+    private List<Produto> produto;
 
     public Usuario(Long id, String nome, String email, String senha, Boolean ativo, String foto) {
         super();

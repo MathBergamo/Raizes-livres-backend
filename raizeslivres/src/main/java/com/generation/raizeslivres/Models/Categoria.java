@@ -1,7 +1,10 @@
 package com.generation.raizeslivres.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+
+import java.util.List;
 
 @Entity
 @Table(name = "categoria")
@@ -16,6 +19,13 @@ public class Categoria {
 
     @NotNull
     private Boolean ativo;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties("categoria")
+    private List<Produto> produto;
+
+    public Categoria() {
+    }
 
     public Categoria(Long id, String descricao, Boolean ativo) {
         this.id = id;

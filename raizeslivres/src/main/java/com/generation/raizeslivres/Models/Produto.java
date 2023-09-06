@@ -1,5 +1,6 @@
 package com.generation.raizeslivres.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -22,6 +23,14 @@ public class Produto {
     private String descricao;
 
     private String foto;
+
+    @ManyToOne
+    @JsonIgnoreProperties("produto")
+    private Categoria categoria;
+
+    @ManyToOne
+    @JsonIgnoreProperties("usuario")
+    private Usuario usuario;
 
     public Produto() {
     }
