@@ -1,17 +1,15 @@
 package com.generation.raizeslivres.Service;
 
-import java.util.List;
-import java.util.Optional;
-
+import com.generation.raizeslivres.Models.Produto;
+import com.generation.raizeslivres.Repository.ProdutoRepository;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.generation.raizeslivres.Models.Produto;
-import com.generation.raizeslivres.Repository.ProdutoRepository;
-
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProdutoService {
@@ -39,19 +37,16 @@ public class ProdutoService {
         }
     }
 
-    public List<Produto> getAll(){
+    public List<Produto> getAll() {
         return produtoRepository.findAll();
     }
-    
-    public Optional<Produto> update (@Valid Produto produto) {
-    	Optional<Produto> existeProduto = produtoRepository.findById(produto.getId());
-    	if(existeProduto.isPresent())
-    		return Optional.of(produtoRepository.save(produto));
-    	return Optional.empty();
-    
-    	
-    	
+
+    public Optional<Produto> update(@Valid Produto produto) {
+        Optional<Produto> updateProduto = produtoRepository.findById(produto.getId());
+        if (updateProduto.isPresent())
+            return Optional.of(produtoRepository.save(produto));
+        return Optional.empty();
     }
-    
+
 }
 

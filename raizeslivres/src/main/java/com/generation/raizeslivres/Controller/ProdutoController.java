@@ -54,9 +54,8 @@ public class ProdutoController {
     
     @PutMapping
     public ResponseEntity<Optional<Produto>> update(@Valid @RequestBody Produto produto){
-    	 Optional<Produto> existeProduto = produtoService.update(produto);
-         return ResponseEntity.ok(existeProduto);
+    	 Optional<Produto> updatedProduto = produtoService.update(produto);
+         return ResponseEntity.ok(updatedProduto);
      }
-    	
     
 }

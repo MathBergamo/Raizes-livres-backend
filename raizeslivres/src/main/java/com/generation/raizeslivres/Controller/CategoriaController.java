@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/categoria")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CategoriaController {
-	
-	
+
 
 }
