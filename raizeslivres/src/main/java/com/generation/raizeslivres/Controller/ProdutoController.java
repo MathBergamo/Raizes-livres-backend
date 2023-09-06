@@ -53,10 +53,9 @@ public class ProdutoController {
     }
     
     @PutMapping
-    public ResponseEntity<Produto> put(@Valid @RequestBody Produto produto){
-    	 Optional<Produto> existeProduto = produtoService.put(produto);
-         return existeProduto.map(ResponseEntity::ok)
-                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    public ResponseEntity<Optional<Produto>> update(@Valid @RequestBody Produto produto){
+    	 Optional<Produto> existeProduto = produtoService.update(produto);
+         return ResponseEntity.ok(existeProduto);
      }
     	
     

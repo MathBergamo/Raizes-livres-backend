@@ -43,12 +43,13 @@ public class ProdutoService {
         return produtoRepository.findAll();
     }
     
-    public Optional<Produto> put (@Valid Produto produto) {
+    public Optional<Produto> update (@Valid Produto produto) {
     	Optional<Produto> existeProduto = produtoRepository.findById(produto.getId());
     	if(existeProduto.isPresent())
     		return Optional.of(produtoRepository.save(produto));
     	return Optional.empty();
     
+    	
     	
     }
     
