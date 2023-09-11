@@ -1,6 +1,7 @@
 package com.generation.raizeslivres.Controller;
 
 import com.generation.raizeslivres.Models.Categoria;
+import com.generation.raizeslivres.Models.Produto;
 import com.generation.raizeslivres.Service.CategoriaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class CategoriaController {
     @GetMapping("/{id}")
     public ResponseEntity<Categoria> findById(@PathVariable Long id) {
         Categoria categoria = categoriaService.findById(id);
-        return ResponseEntity.ok().body(categoria);
+        return ResponseEntity.ok(categoria);
     }
 
     @GetMapping
@@ -48,9 +49,9 @@ public class CategoriaController {
         return ResponseEntity.noContent().build();
     }
 
-//    @GetMapping("/{categoria}")
-//    public ResponseEntity<List<Categoria>> getByCategoria(@PathVariable String categoria){
-//        List<Categoria> categorias = categoriaService.getByCategoria(categoria);
-//        return (ResponseEntity<List<Categoria>>) categoriaService.getByCategoria(null);
-//    }
+    @GetMapping("/nome/{categoria}")
+    public ResponseEntity<List<Produto>> getByCategoria(@PathVariable String categoria) {
+        List<Produto> produtos = categoriaService.getByCategoria(categoria);
+        return ResponseEntity.ok(produtos);
+    }
 }

@@ -1,12 +1,14 @@
 package com.generation.raizeslivres.Service;
 
 import com.generation.raizeslivres.Models.Categoria;
+import com.generation.raizeslivres.Models.Produto;
 import com.generation.raizeslivres.Repository.CategoriaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +17,9 @@ public class CategoriaService {
 
     @Autowired
     private CategoriaRepository categoriaRepository;
+
+    @Autowired
+    private ProdutoService produtoService;
 
     public List<Categoria> getAll() {
         return categoriaRepository.findAll();
@@ -46,8 +51,15 @@ public class CategoriaService {
         }
     }
 
-//    public List<Categoria> getByCategoria(String categoria){
-//        return null;
-//    }
+    public List<Produto> getByCategoria(String nomeCategoria) {
+        List<Produto> allProdutos = produtoService.getAll();
+        List<Produto> produtosPorCategoria = new LinkedList<>();
+        for (Produto produto: allProdutos) {
+            if (produto.getCategoria().getNome().equalsIgnoreCase(nomeCategoria)){
+                produtosPorCategoria.add(produto);
+            }
+        }
+        return produtosPorCategoria;
+    }
 
 }
