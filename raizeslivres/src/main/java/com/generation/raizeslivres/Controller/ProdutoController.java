@@ -48,4 +48,8 @@ public class ProdutoController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/nome/{produto}")
+    public ResponseEntity<Produto> getByNome(@PathVariable String produto){
+        return ResponseEntity.ok(produtoService.getByNome(produto));
+    }
 }
