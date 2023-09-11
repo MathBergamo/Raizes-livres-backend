@@ -36,7 +36,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `db_raizes_livres`.`categoria` (
   `id` INT NOT NULL AUTO_INCREMENT COMMENT 'codigo da categoria e chave primaria',
-  `descricao` VARCHAR(255) NOT NULL COMMENT 'descrição da categoria do produto',
+  `nome` VARCHAR(255) NOT NULL COMMENT 'descrição da categoria do produto',
   `ativo` TINYINT NOT NULL COMMENT 'campo para verificar se a categoria foi ou não excluida de nosso sistema',
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
