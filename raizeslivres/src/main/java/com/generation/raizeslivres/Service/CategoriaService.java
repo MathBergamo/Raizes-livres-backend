@@ -52,14 +52,7 @@ public class CategoriaService {
     }
 
     public List<Produto> getByCategoria(String nomeCategoria) {
-        List<Produto> allProdutos = produtoService.getAll();
-        List<Produto> produtosPorCategoria = new LinkedList<>();
-        for (Produto produto: allProdutos) {
-            if (produto.getCategoria().getNome().equalsIgnoreCase(nomeCategoria)){
-                produtosPorCategoria.add(produto);
-            }
-        }
-        return produtosPorCategoria;
+        return categoriaRepository.findProdutosByCategoriaNome(nomeCategoria);
     }
 
 }
