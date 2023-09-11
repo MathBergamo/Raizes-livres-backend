@@ -42,12 +42,23 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public Produto(Long id, String nome, Float preco, String descricao, String foto) {
+    public Produto(Long id, String nome, Float preco, String descricao, String foto, Categoria categoria) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
         this.descricao = descricao;
         this.foto = foto;
+        this.categoria = categoria;
+    }
+
+    public Produto(Long id, String nome, Float preco, String descricao, String foto, Categoria categoria, Usuario usuario) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+        this.descricao = descricao;
+        this.foto = foto;
+        this.categoria = categoria;
+        this.usuario = usuario;
     }
 
     public Long getId() {
@@ -88,5 +99,21 @@ public class Produto {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
