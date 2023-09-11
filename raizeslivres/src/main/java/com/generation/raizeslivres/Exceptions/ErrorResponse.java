@@ -1,4 +1,4 @@
-package com.generation.raizeslivres.exceptions;
+package com.generation.raizeslivres.Exceptions;
 
 import lombok.Getter;
 import lombok.Setter;

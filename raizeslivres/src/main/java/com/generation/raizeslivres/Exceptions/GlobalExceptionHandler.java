@@ -1,4 +1,4 @@
-package com.generation.raizeslivres.exceptions;
+package com.generation.raizeslivres.Exceptions;
 
 
 import jakarta.persistence.EntityNotFoundException;
