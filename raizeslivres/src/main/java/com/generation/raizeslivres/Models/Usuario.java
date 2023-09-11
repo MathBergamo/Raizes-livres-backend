@@ -24,7 +24,6 @@ public class Usuario {
     private String email;
 
     @NotBlank
-    @Min(8)
     private String senha;
 
     @NotNull
@@ -35,6 +34,9 @@ public class Usuario {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties("usuario")
     private List<Produto> produto;
+
+    public Usuario() {
+    }
 
     public Usuario(Long id, String nome, String email, String senha, Boolean ativo, String foto) {
         super();
