@@ -1,6 +1,7 @@
 package com.generation.raizeslivres.Service;
 
 import com.generation.raizeslivres.Models.Categoria;
+import com.generation.raizeslivres.Models.Dto.CategoriaDTO;
 import com.generation.raizeslivres.Models.Produto;
 import com.generation.raizeslivres.Repository.CategoriaRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -31,15 +32,20 @@ public class CategoriaService {
                 "Categoria não encontrada! Id: " + id));
     }
 
-    public Categoria create(Categoria categoria) {
-        return categoriaRepository.save(categoria);
+    public Categoria create(CategoriaDTO categoriaDTO) {
+        Categoria createdCategoria = new Categoria();
+        createdCategoria.setId(categoriaDTO.id());
+        createdCategoria.setNome(categoriaDTO.nome());
+        createdCategoria.setAtivo(categoriaDTO.ativo());
+        return categoriaRepository.save(createdCategoria);
     }
 
-    public Optional<Categoria> update(@Valid Categoria categoria) {
-        Optional<Categoria> updatedCategoria = categoriaRepository.findById(categoria.getId());
-        if (updatedCategoria.isPresent())
-            return Optional.of(categoriaRepository.save(categoria));
-        return Optional.empty();
+    public Categoria update(@Valid CategoriaDTO categoriaDTO) {
+        Categoria updatedCategoria = findById(categoriaDTO.id());
+        updatedCategoria.setId(categoriaDTO.id());
+        updatedCategoria.setNome(categoriaDTO.nome());
+        updatedCategoria.setAtivo(categoriaDTO.ativo());
+        return categoriaRepository.save(updatedCategoria);
     }
 
     public void delete(Long id) {

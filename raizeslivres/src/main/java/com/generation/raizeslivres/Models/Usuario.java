@@ -47,23 +47,6 @@ public class Usuario {
         this.produto = produto;
     }
 
-    public Usuario(Long id, String nome, String email, String senha, Boolean ativo, String foto) {
-        Id = id;
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.ativo = ativo;
-        this.foto = foto;
-    }
-
-    public Usuario(Long id, String nome, String email, String senha, Boolean ativo) {
-        Id = id;
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.ativo = ativo;
-    }
-
     public Long getId() {
         return Id;
     }

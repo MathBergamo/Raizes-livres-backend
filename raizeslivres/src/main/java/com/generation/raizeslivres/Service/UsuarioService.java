@@ -1,5 +1,6 @@
 package com.generation.raizeslivres.Service;
 
+import com.generation.raizeslivres.Models.Dto.UsuarioDTO;
 import com.generation.raizeslivres.Models.Usuario;
 import com.generation.raizeslivres.Repository.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -14,7 +15,7 @@ import java.util.Optional;
 @Service
 public class UsuarioService {
     @Autowired
-    UsuarioRepository usuarioRepository;
+    private UsuarioRepository usuarioRepository;
 
     public Usuario findById(Long id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
@@ -27,15 +28,27 @@ public class UsuarioService {
     }
 
     @Transactional
-    public Usuario create(@Valid Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    public Usuario create(@Valid UsuarioDTO usuarioDTO) {
+        Usuario createdUsuario = new Usuario();
+        createdUsuario.setNome(usuarioDTO.nome());
+        createdUsuario.setEmail(usuarioDTO.email());
+        createdUsuario.setSenha(usuarioDTO.senha());
+        createdUsuario.setAtivo(usuarioDTO.ativo());
+        createdUsuario.setFoto(usuarioDTO.foto());
+
+        return usuarioRepository.save(createdUsuario);
     }
 
-    public Optional<Usuario> update(@Valid Usuario usuario) {
-        Optional<Usuario> updateUsuario = usuarioRepository.findById(usuario.getId());
-        if (updateUsuario.isPresent())
-            return Optional.of(usuarioRepository.save(usuario));
-        return Optional.empty();
+    @Transactional
+    public Usuario update(@Valid UsuarioDTO usuarioDTO) {
+        Usuario usuarioUpdated = findById(usuarioDTO.id());
+        usuarioUpdated.setNome(usuarioDTO.nome());
+        usuarioUpdated.setEmail(usuarioDTO.email());
+        usuarioUpdated.setSenha(usuarioDTO.senha());
+        usuarioUpdated.setAtivo(usuarioDTO.ativo());
+        usuarioUpdated.setFoto(usuarioDTO.foto());
+
+        return usuarioRepository.save(usuarioUpdated);
     }
 
     public void delete(Long id) {
