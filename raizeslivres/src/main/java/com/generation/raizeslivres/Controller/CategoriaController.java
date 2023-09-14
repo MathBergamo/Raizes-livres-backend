@@ -1,6 +1,7 @@
 package com.generation.raizeslivres.Controller;
 
 import com.generation.raizeslivres.Models.Categoria;
+import com.generation.raizeslivres.Models.Dto.CategoriaDTO;
 import com.generation.raizeslivres.Models.Produto;
 import com.generation.raizeslivres.Service.CategoriaService;
 import jakarta.validation.Valid;
@@ -31,14 +32,14 @@ public class CategoriaController {
     }
 
     @PostMapping
-    public ResponseEntity<Categoria> create(@Valid @RequestBody Categoria categoria) {
-        Categoria createdCategoria = categoriaService.create(categoria);
+    public ResponseEntity<Categoria> create(@Valid @RequestBody CategoriaDTO categoriaDTO) {
+        Categoria createdCategoria = categoriaService.create(categoriaDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdCategoria);
     }
 
     @PutMapping
-    public ResponseEntity<Optional<Categoria>> update(@Valid @RequestBody Categoria categoria) {
-        Optional<Categoria> updatedCategoria = categoriaService.update(categoria);
+    public ResponseEntity<Categoria> update(@Valid @RequestBody CategoriaDTO categoriaDTO) {
+        Categoria updatedCategoria = categoriaService.update(categoriaDTO);
         return ResponseEntity.ok(updatedCategoria);
     }
 

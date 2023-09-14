@@ -29,26 +29,10 @@ public class Produto {
     private Categoria categoria;
 
     @ManyToOne
-    @JsonIgnoreProperties("usuario")
+    @JsonIgnoreProperties("produto")
     private Usuario usuario;
 
     public Produto() {
-    }
-
-    public Produto(Long id, String nome, Float preco, String descricao) {
-        this.id = id;
-        this.nome = nome;
-        this.preco = preco;
-        this.descricao = descricao;
-    }
-
-    public Produto(Long id, String nome, Float preco, String descricao, String foto, Categoria categoria) {
-        this.id = id;
-        this.nome = nome;
-        this.preco = preco;
-        this.descricao = descricao;
-        this.foto = foto;
-        this.categoria = categoria;
     }
 
     public Produto(Long id, String nome, Float preco, String descricao, String foto, Categoria categoria, Usuario usuario) {

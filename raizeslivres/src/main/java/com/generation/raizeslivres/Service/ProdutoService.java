@@ -1,5 +1,6 @@
 package com.generation.raizeslivres.Service;
 
+import com.generation.raizeslivres.Models.Dto.ProdutoDTO;
 import com.generation.raizeslivres.Models.Produto;
 import com.generation.raizeslivres.Repository.ProdutoRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -29,15 +30,28 @@ public class ProdutoService {
 
 
     @Transactional
-    public Produto create(@Valid Produto produto) {
-        return produtoRepository.save(produto);
+    public Produto create(@Valid ProdutoDTO produtoDTO) {
+        Produto createdProduto = new Produto();
+        createdProduto.setId(produtoDTO.id());
+        createdProduto.setNome(produtoDTO.nome());
+        createdProduto.setPreco(produtoDTO.preco());
+        createdProduto.setDescricao(produtoDTO.descricao());
+        createdProduto.setFoto(produtoDTO.foto());
+        createdProduto.setCategoria(produtoDTO.categoria());
+
+        return produtoRepository.save(createdProduto);
     }
 
-    public Optional<Produto> update(@Valid Produto produto) {
-        Optional<Produto> updateProduto = produtoRepository.findById(produto.getId());
-        if (updateProduto.isPresent())
-            return Optional.of(produtoRepository.save(produto));
-        return Optional.empty();
+    public Produto update(@Valid ProdutoDTO produtoDTO) {
+        Produto updatedProduto = findById(produtoDTO.id());
+        updatedProduto.setId(produtoDTO.id());
+        updatedProduto.setNome(produtoDTO.nome());
+        updatedProduto.setPreco(produtoDTO.preco());
+        updatedProduto.setDescricao(produtoDTO.descricao());
+        updatedProduto.setFoto(produtoDTO.foto());
+        updatedProduto.setUsuario(produtoDTO.usuario());
+
+        return produtoRepository.save(updatedProduto);
     }
 
     public void delete(Long id) {

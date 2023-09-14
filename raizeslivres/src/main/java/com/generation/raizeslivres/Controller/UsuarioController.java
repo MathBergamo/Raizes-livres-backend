@@ -1,6 +1,6 @@
 package com.generation.raizeslivres.Controller;
 
-import com.generation.raizeslivres.Models.Produto;
+import com.generation.raizeslivres.Models.Dto.UsuarioDTO;
 import com.generation.raizeslivres.Models.Usuario;
 import com.generation.raizeslivres.Service.UsuarioService;
 import jakarta.validation.Valid;
@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuario")
@@ -21,7 +20,7 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> findById(@PathVariable Long id){
+    public ResponseEntity<Usuario> findById(@PathVariable Long id) {
         return ResponseEntity.ok(usuarioService.findById(id));
     }
 
@@ -31,14 +30,14 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> create(@Valid @RequestBody Usuario usuario) {
-        Usuario createdUsuario = usuarioService.create(usuario);
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
+    public ResponseEntity<Usuario> create(@Valid @RequestBody UsuarioDTO usuarioDTO) {
+        Usuario createdUsuario = usuarioService.create(usuarioDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUsuario);
     }
 
     @PutMapping
-    public ResponseEntity<Optional<Usuario>> update(@Valid @RequestBody Usuario usuario) {
-        Optional<Usuario> updatedUsuario = usuarioService.update(usuario);
+    public ResponseEntity<Usuario> update(@Valid @RequestBody UsuarioDTO usuarioDTO) {
+        Usuario updatedUsuario = usuarioService.update(usuarioDTO);
         return ResponseEntity.ok(updatedUsuario);
     }
 

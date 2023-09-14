@@ -3,7 +3,6 @@ package com.generation.raizeslivres.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -38,14 +37,14 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Long id, String nome, String email, String senha, Boolean ativo, String foto) {
-        super();
+    public Usuario(Long id, String nome, String email, String senha, Boolean ativo, String foto, List<Produto> produto) {
         Id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.ativo = ativo;
         this.foto = foto;
+        this.produto = produto;
     }
 
     public Long getId() {
@@ -94,5 +93,13 @@ public class Usuario {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public List<Produto> getProduto() {
+        return produto;
+    }
+
+    public void setProduto(List<Produto> produto) {
+        this.produto = produto;
     }
 }

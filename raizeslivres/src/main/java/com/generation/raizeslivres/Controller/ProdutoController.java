@@ -1,5 +1,6 @@
 package com.generation.raizeslivres.Controller;
 
+import com.generation.raizeslivres.Models.Dto.ProdutoDTO;
 import com.generation.raizeslivres.Models.Produto;
 import com.generation.raizeslivres.Service.ProdutoService;
 import jakarta.validation.Valid;
@@ -30,14 +31,14 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<Produto> create(@Valid @RequestBody Produto produto) {
+    public ResponseEntity<Produto> create(@Valid @RequestBody ProdutoDTO produto) {
         Produto createdProduto = produtoService.create(produto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(produto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdProduto);
     }
 
     @PutMapping
-    public ResponseEntity<Optional<Produto>> update(@Valid @RequestBody Produto produto) {
-        Optional<Produto> updatedProduto = produtoService.update(produto);
+    public ResponseEntity<Produto> update(@Valid @RequestBody ProdutoDTO produtoDTO) {
+        Produto updatedProduto = produtoService.update(produtoDTO);
         return ResponseEntity.ok(updatedProduto);
     }
 
