@@ -71,8 +71,6 @@ public class LoginService{
 
 
    public Optional<Login> autenticarUsuario(Optional<Login> usuarioLogin) {
-
-
        var credenciais = new UsernamePasswordAuthenticationToken(usuarioLogin.get().getUsuario(), usuarioLogin.get().getSenha());
 
 
@@ -81,12 +79,9 @@ public class LoginService{
 
        if (authentication.isAuthenticated()) {
 
-
            Optional<Usuario> usuario = usuarioRepository.findByEmail(usuarioLogin.get().getUsuario());
 
-
            if (usuario.isPresent()) {
-
 
                usuarioLogin.get().setId(usuario.get().getId());
                usuarioLogin.get().setNome(usuario.get().getNome());
@@ -94,19 +89,10 @@ public class LoginService{
                usuarioLogin.get().setToken(gerarToken(usuarioLogin.get().getUsuario()));
                usuarioLogin.get().setSenha("");
 
-
                return usuarioLogin;
-
-
            }
-
-
        }
-
-
        return Optional.empty();
-
-
    }
 
 

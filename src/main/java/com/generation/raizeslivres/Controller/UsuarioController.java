@@ -29,12 +29,6 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.getAll());
     }
 
-    @PostMapping
-    public ResponseEntity<Usuario> create(@Valid @RequestBody UsuarioDTO usuarioDTO) {
-        Usuario createdUsuario = usuarioService.create(usuarioDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdUsuario);
-    }
-
     @PutMapping
     public ResponseEntity<Usuario> update(@Valid @RequestBody UsuarioDTO usuarioDTO) {
         Usuario updatedUsuario = usuarioService.update(usuarioDTO);

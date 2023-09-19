@@ -28,18 +28,6 @@ public class UsuarioService {
     }
 
     @Transactional
-    public Usuario create(@Valid UsuarioDTO usuarioDTO) {
-        Usuario createdUsuario = new Usuario();
-        createdUsuario.setNome(usuarioDTO.nome());
-        createdUsuario.setEmail(usuarioDTO.email());
-        createdUsuario.setSenha(usuarioDTO.senha());
-        createdUsuario.setAtivo(usuarioDTO.ativo());
-        createdUsuario.setFoto(usuarioDTO.foto());
-
-        return usuarioRepository.save(createdUsuario);
-    }
-
-    @Transactional
     public Usuario update(@Valid UsuarioDTO usuarioDTO) {
         Usuario usuarioUpdated = findById(usuarioDTO.id());
         usuarioUpdated.setNome(usuarioDTO.nome());

@@ -1,10 +1,14 @@
 package com.generation.raizeslivres.Models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Login {
 
     private Long id;
     private String nome;
     private String usuario;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String senha;
     private String foto;
     private String token;
