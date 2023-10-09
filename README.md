@@ -1,39 +1,101 @@
-# Projeto E-commerce - Raizes Livres
+# Raízes Livres - Projeto Integrador Generation Brasil
 
-Este é o README do projeto de E-commerce desenvolvido como parte do curso de Desenvolvedor Java Fullstack Junior oferecido pela Generation. O projeto está em sua fase inicial e tem como objetivo principal a criação de uma plataforma de comércio eletrônico (e-commerce) voltada para a entrega de alimentos de qualidade para moradores de rua na cidade de São Paulo. Além disso, o projeto tem a missão de promover e divulgar as comidas nativas e tradicionais de diversas regiões do Brasil.
+## Descrição do Projeto
 
-## Objetivo
+Este é um projeto integrador desenvolvido como parte do programa Generation Brasil. O projeto Raízes Livres tem como objetivo criar uma aplicação para gerenciar categorias, produtos e usuários. A API oferece operações como criar, recuperar, atualizar e excluir para cada uma dessas entidades.
 
-O objetivo central deste projeto é aplicar os conhecimentos adquiridos durante o curso, em particular, a utilização das tecnologias Java, Spring Boot, JPA, MVC e MySQL para criar uma plataforma funcional que facilite a doação e entrega de alimentos aos moradores de rua. Além disso, o projeto busca valorizar a diversidade culinária do Brasil, destacando as comidas típicas de diferentes regiões e incentivando o consumo responsável e solidário.
+## Swagger
 
-## Funcionalidades Planejadas
+A documentação da API está disponível via Swagger. Para acessar, utilize o seguinte link:
 
-O projeto E-commerce de Alimentos para Moradores de Rua incluirá as seguintes funcionalidades principais:
+- [Documentação Swagger](https://blogpessoal-83of.onrender.com/swagger-ui/index.html)
 
-1. **Cadastro de Usuários:** Permitirá que os usuários se cadastrem na plataforma, fornecendo informações básicas e criando uma conta.
-2. **Exploração de Produtos:** Os usuários poderão explorar os alimentos disponíveis para doação, com informações detalhadas sobre cada item.
-3. **Carrinho de Compras:** Funcionalidade que permite aos usuários selecionar os alimentos desejados e adicioná-los ao carrinho de compras virtual.
-4. **Finalização de Pedido:** Os usuários poderão revisar seu carrinho, confirmar os itens selecionados e finalizar o pedido de doação.
-5. **Administração de Produtos:** Área administrativa para adicionar, atualizar ou remover produtos disponíveis para doação.
+## Configuração do Swagger
 
-## Tecnologias Utilizadas
+A configuração do Swagger pode ser encontrada na classe `SwaggerConfig`. Ela define informações sobre a API, como título, descrição, versão e licença. Além disso, são fornecidos links para documentação externa e informações de contato.
 
-O projeto será desenvolvido utilizando as seguintes tecnologias:
+## Endpoints
 
-- **Java:** Linguagem de programação orientada a objetos amplamente utilizada no desenvolvimento web e de aplicativos.
-- **Spring Boot:** Framework que simplifica o desenvolvimento de aplicativos Java, oferecendo configurações e funcionalidades pré-definidas.
-- **JPA (Java Persistence API):** Especificação que permite o mapeamento de objetos Java para tabelas em bancos de dados relacionais.
-- **MVC (Model-View-Controller):** Padrão de arquitetura de software que separa a aplicação em três componentes principais: modelo, visão e controlador.
-- **MySQL:** Sistema de gerenciamento de banco de dados relacional, usado para armazenar os dados da aplicação.
+### Categoria
 
-## Status Atual
+- **GET /categoria/{id}**: Recupera uma categoria pelo ID.
+- **GET /categoria**: Recupera todas as categorias.
+- **POST /categoria**: Cria uma nova categoria.
+- **PUT /categoria**: Atualiza uma categoria existente.
+- **DELETE /categoria/{id}**: Exclui uma categoria pelo ID.
+- **GET /categoria/nome/{categoria}**: Recupera produtos por nome de categoria.
 
-O projeto encontra-se em sua fase inicial, onde a definição dos requisitos, arquitetura e modelagem estão sendo elaborados. A próxima etapa envolverá a implementação das funcionalidades básicas e a criação das interfaces de usuário.
+### Login
 
-Estamos empolgados com a oportunidade de aplicar nossos conhecimentos técnicos para criar uma plataforma que não apenas promova a solidariedade, mas também celebre a riqueza da culinária brasileira.
+- **GET /login/all**: Recupera todos os usuários.
+- **GET /login/{id}**: Recupera um usuário pelo ID.
+- **POST /login**: Autentica um usuário.
+- **POST /login/cadastrar**: Cadastra um novo usuário.
+- **PUT /login/atualizar**: Atualiza um usuário existente.
+- **DELETE /login/{id}**: Exclui um usuário pelo ID.
 
-## Como Contribuir
+### Produto
 
-Embora este projeto esteja sendo desenvolvido como parte do curso da Generation, valorizamos contribuições externas e feedback. Se você tiver ideias, sugestões ou desejar se envolver de alguma forma, sinta-se à vontade para entrar em contato conosco.
+- **GET /produto/{id}**: Recupera um produto pelo ID.
+- **GET /produto**: Recupera todos os produtos.
+- **POST /produto**: Cria um novo produto.
+- **PUT /produto**: Atualiza um produto existente.
+- **DELETE /produto/{id}**: Exclui um produto pelo ID.
+- **GET /produto/nome/{produto}**: Recupera um produto por nome.
 
-Este projeto é parte do curso de Desenvolvedor Java Fullstack Junior oferecido pela Generation. Todos os direitos reservados.
+### Tratamento de Exceções
+
+Há um tratamento global de exceções implementado na classe `GlobalExceptionHandler`. Ele trata exceções comuns, como erro interno do servidor, conflitos, recursos não encontrados e solicitações inválidas.
+
+## Modelo de Dados
+
+O projeto utiliza as seguintes entidades:
+
+### Categoria
+
+- **id**: Identificador único.
+- **nome**: Nome da categoria.
+- **ativo**: Indica se a categoria está ativa.
+
+### Produto
+
+- **id**: Identificador único.
+- **nome**: Nome do produto.
+- **preco**: Preço do produto.
+- **descricao**: Descrição do produto.
+- **foto**: URL da foto do produto.
+- **categoria**: Categoria à qual o produto pertence.
+- **usuario**: Usuário que cadastrou o produto.
+
+### Usuario
+
+- **id**: Identificador único.
+- **nome**: Nome do usuário.
+- **email**: Endereço de e-mail do usuário.
+- **senha**: Senha do usuário (criptografada).
+- **ativo**: Indica se o usuário está ativo.
+- **foto**: URL da foto do usuário.
+- **produto**: Lista de produtos cadastrados pelo usuário.
+
+### Login
+
+- **id**: Identificador único.
+- **nome**: Nome do usuário.
+- **usuario**: Nome de usuário (para autenticação).
+- **senha**: Senha do usuário (não retornada nas consultas).
+- **foto**: URL da foto do usuário.
+- **token**: Token de autenticação.
+
+## Executando o Projeto
+
+- O aplicativo estará disponível em http://localhost:8080.
+
+Observação: Certifique-se de ter o Docker instalado em seu sistema.
+O projeto está configurado para ser construído e executado usando o Docker. Utilize o seguinte comando para construir e executar o contêiner:
+
+```bash
+docker build -t raizes-livres .
+docker run -p 8080:8080 raizes-livres
+```
+## Contribuições
+Este projeto foi desenvolvido como parte do programa Generation Brasil. Contribuições são bem-vindas e encorajadas. Sinta-se à vontade para criar pull requests ou abrir issues para melhorias e correções.
