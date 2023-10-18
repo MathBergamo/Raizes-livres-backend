@@ -38,6 +38,7 @@ public class ProdutoService {
         createdProduto.setDescricao(produtoDTO.descricao());
         createdProduto.setFoto(produtoDTO.foto());
         createdProduto.setCategoria(produtoDTO.categoria());
+        createdProduto.setUsuario(produtoDTO.usuario());
 
         return produtoRepository.save(createdProduto);
     }
